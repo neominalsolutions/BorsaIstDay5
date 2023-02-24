@@ -26,27 +26,27 @@ export const counterReducer = createReducer(
     return {
       ...state,
       counter: state.counter + 1,
-    };
+    } as counterState;
   }),
   on(decrement, (state: counterState) => {
     console.log('state-dec', state);
     return {
       ...state, // spread
       counter: state.counter - 1,
-    };
+    } as counterState;
   }),
   on(reset, (state: counterState) => {
     console.log('state-reset', state);
     return {
       ...state,
       counter: 0,
-    };
+    } as counterState;
   }),
   on(incrementByValue, (state: counterState, action: any) => {
-    console.log('state-reset', state);
+    console.log('state-reset', 'action', state, action);
     return {
       ...state,
-      counter: action,
-    };
+      counter: action.value,
+    } as counterState;
   })
 );

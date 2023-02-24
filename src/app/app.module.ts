@@ -8,6 +8,7 @@ import { counterReducer } from './store/reducers/counter.reducer';
 import { CounterComponent } from './components/counter/counter.component';
 import { CounterIncrementComponent } from './components/counter-increment/counter-increment.component';
 import { CounterDecrementComponent } from './components/counter-decrement/counter-decrement.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,17 @@ import { CounterDecrementComponent } from './components/counter-decrement/counte
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     StoreModule.forRoot(
       {
-        counterState: counterReducer, // uygulama istediğimiz kadar state tanımı yapabiliriz
+        counter: counterReducer, // uygulama istediğimiz kadar state tanımı yapabiliriz
+        // buradaki isimi state selector name ismi
       },
       {}
     ),
+    StoreDevtoolsModule.instrument({
+      name: 'NgRx Demo App',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

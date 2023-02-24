@@ -10,12 +10,12 @@ import { counterState } from 'src/app/store/reducers/counter.reducer';
   styleUrls: ['./counter.component.css'],
 })
 export class CounterComponent {
-  counter$!: Observable<number>;
+  counter!: number;
 
   constructor(private store: Store<counterState>) {
-    this.counter$ = this.store.select('counter');
-    this.store.select('counter').subscribe((value) => {
+    this.store.select('counter').subscribe((value: any) => {
       console.log('value', value);
+      this.counter = value.counter;
     });
   }
 
